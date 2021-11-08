@@ -1,1 +1,1 @@
-worker: python3 -m MusicEagle
+worker: python3 -m musicXeagle
