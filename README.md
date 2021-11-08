@@ -29,7 +29,7 @@ Get pyrogram (p)  `SESSION` from here:
 [![Run on Repl.it](https://repl.it/badge/github/ChankitSaini/GenerateStringSession)](https://replit.com/@Mustache234/String#main.py)
 
   
-  ### Commands for Group 🛠
+  ### Commands for Group
 #### For all in group
 
 - `/play <song name>` - play song you requested
