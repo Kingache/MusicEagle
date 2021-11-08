@@ -15,10 +15,6 @@ ARQ_API_KEY = getenv("ARQ_API_KEY")
 BOT_TOKEN = getenv("BOT_TOKEN")
 BOT_NAME = getenv("BOT_NAME", "Eagle")
 BG_IMAGE = getenv("BG_IMAGE", "https://telegra.ph/file/8628c642a266a22effd8c.png")
-THUMB_IMG = getenv("THUMB_IMG", "https://telegra.ph/file/67a673419b672dbc3da02.jpg")
-AUD_IMG = getenv("AUD_IMG", "https://telegra.ph/file/5dd3d6d64ccd785ae5af2.jpg")
-QUE_IMG = getenv("QUE_IMG", "https://telegra.ph/file/84f09e57f97f6e1bb3cba.jpg")
-CMD_IMG = getenv("CMD_IMG", "https://telegra.ph/file/84f09e57f97f6e1bb3cba.jpg")
 ALIVE_IMG = getenv("ALIVE_IMG", "https://telegra.ph/file/5dd3d6d64ccd785ae5af2.jpg")
 API_ID = int(getenv("API_ID"))
 API_HASH = getenv("API_HASH")
@@ -44,7 +40,7 @@ U_BRANCH = "main"
 HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
 HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
 SOURCE_CODE = os.environ.get(
-    "SOURCE_CODE", "https://t.me/iniprofil"
+    "SOURCE_CODE", "https://github.com/Kingache/MusicEagle"
 )
 
 aiohttpsession = aiohttp.ClientSession()
