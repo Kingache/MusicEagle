@@ -32,9 +32,7 @@ async def _human_time_duration(seconds):
 @Client.on_message(command("start") & filters.private & ~filters.edited)
 async def start_(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>👋 **ʜᴇʟʟᴏ {message.from_user.mention} ᴊᴀᴍᴇᴛ**</b> ❗
-**[{BOT_NAME}](https://t.me/{BOT_USERNAME}) ᴀᴅᴀʟᴀʜ ʙᴏᴛ ʏᴀɴɢ ᴅɪʀᴀɴᴄᴀɴɢ ᴜɴᴛᴜᴋ ᴍᴇᴍᴜᴛᴀʀ ᴍᴜsɪᴋ ᴅɪ ɢʀᴜᴘ ᴏʙʀᴏʟᴀɴ sᴜᴀʀᴀ ᴀɴᴅᴀ!**
-**ᴜɴᴛᴜᴋ ᴍᴇʟɪʜᴀᴛ ʙᴇʙᴇʀᴀᴘᴀ ᴘᴇʀɪɴᴛᴀʜ ᴅᴀʟᴀᴍ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ ʙᴏᴛ ɪɴɪ, ᴋʟɪᴋ » /help**""",
+        f"""<b>👋 **ʜᴇʟʟᴏ {message.from_user.mention}**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
