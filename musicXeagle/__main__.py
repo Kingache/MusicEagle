@@ -31,7 +31,7 @@ bot = Bot(
     API_ID,
     API_HASH,
     bot_token=BOT_TOKEN,
-    plugins=dict(root="musicXeagle.modules"),
+    plugins=dict(root="musicXeagle.xeagle"),
 )
 
 bot.start()
