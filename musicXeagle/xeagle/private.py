@@ -5,7 +5,6 @@ from musicXeagle.helpers.filters import command
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from musicXeagle.config import SOURCE_CODE,ASSISTANT_NAME,PROJECT_NAME,SUPPORT_GROUP,UPDATES_CHANNEL,BOT_USERNAME
-logging.basicConfig(level=logging.INFO)
 
 
 START_TIME = datetime.utcnow()
