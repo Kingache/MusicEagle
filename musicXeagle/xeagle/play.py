@@ -446,26 +446,6 @@ async def m_cb(b, cb):
         else:
             await cb.answer("Chat is not connected!", show_alert=True)
 
-    elif type_ == "leave":
-        hps = "✅ **the music playback has ended**"
-        if chet_id in callsmusic.pytgcalls.active_calls:
-            try:
-                callsmusic.queues.clear(chet_id)
-            except QueueEmpty:
-                pass
-
-            callsmusic.pytgcalls.leave_group_call(chet_id)
-            await cb.message.edit(
-                    hps,
-                    reply_markup=InlineKeyboardMarkup(
-                        [[InlineKeyboardButton("☟ ᴛᴜᴛᴜᴘ ☟", callback_data="close")]]
-                    ),
-                )
-        else:
-            await cb.answer(
-                "userbot is not connected to voice chat.", show_alert=True
-            )
-
 
 @Client.on_message(command("play") & other_filters)
 async def play(_, message: Message):
