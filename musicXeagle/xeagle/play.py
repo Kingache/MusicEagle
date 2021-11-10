@@ -33,6 +33,7 @@ from youtube_search import YoutubeSearch
 from musicXeagle.config import ARQ_API_KEY
 from musicXeagle.config import BOT_NAME as bn
 from musicXeagle.config import DURATION_LIMIT
+from musicXeagle.config import SUPPORT_GROUP
 from musicXeagle.config import UPDATES_CHANNEL as updateschannel
 from musicXeagle.config import que
 from musicXeagle.function.admins import admins as a
