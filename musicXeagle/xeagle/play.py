@@ -194,9 +194,9 @@ def r_ply(type_):
                 InlineKeyboardButton("⏭", "skip"),
             ],
             [
-                InlineKeyboardButton("Playlist 📖", "playlist"),
+                InlineKeyboardButton("ᴘʟᴀʏʟɪsᴛ", "playlist"),
             ],
-            [InlineKeyboardButton("❌ Close", "cls")],
+            [InlineKeyboardButton("•ᴄʟᴏsᴇ•", "cls")],
         ]
     )
     return mar
@@ -406,9 +406,9 @@ async def m_cb(b, cb):
                     InlineKeyboardButton("⏭", "skip"),
                 ],
                 [
-                    InlineKeyboardButton("Playlist 📖", "playlist"),
+                    InlineKeyboardButton("ᴘʟᴀʏʟɪsᴛ", "playlist"),
                 ],
-                [InlineKeyboardButton("❌ Close", "cls")],
+                [InlineKeyboardButton("•ᴄʟᴏsᴇ•", "cls")],
             ]
         )
         await cb.message.edit(stats, reply_markup=marr)
@@ -445,8 +445,28 @@ async def m_cb(b, cb):
             await cb.message.edit("Successfully Left the Chat!")
         else:
             await cb.answer("Chat is not connected!", show_alert=True)
-            
-     
+
+    elif type_ == "leave":
+        hps = "✅ **the music playback has ended**"
+        if chet_id in callsmusic.pytgcalls.active_calls:
+            try:
+                callsmusic.queues.clear(chet_id)
+            except QueueEmpty:
+                pass
+
+            callsmusic.pytgcalls.leave_group_call(chet_id)
+            await cb.message.edit(
+                    hps,
+                    reply_markup=InlineKeyboardMarkup(
+                        [[InlineKeyboardButton("☟ ᴛᴜᴛᴜᴘ ☟", callback_data="close")]]
+                    ),
+                )
+        else:
+            await cb.answer(
+                "userbot is not connected to voice chat.", show_alert=True
+            )
+
+
 @Client.on_message(command("play") & other_filters)
 async def play(_, message: Message):
     global que
@@ -487,7 +507,7 @@ async def play(_, message: Message):
                         message.chat.id, "Xmarty joined this group for playing music in VC"
                     )
                     await lel.edit(
-                        "<b>Xmarty helper userbot joined your chat</b>",
+                        "<b>Assistant helper userbot joined your chat</b>",
                     )
 
                 except UserAlreadyParticipant:
@@ -551,10 +571,10 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
-                    InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
+                    InlineKeyboardButton("• Sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_GROUP}"),
+                    InlineKeyboardButton("Mᴇɴᴜ •", callback_data="menu"),
                 ],
-                [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+                [InlineKeyboardButton(text="•ᴄʟᴏsᴇ•", callback_data="cls")],
             ]
         )
         file_name = get_file_name(audio)
@@ -610,14 +630,10 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
-                    InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
+                    InlineKeyboardButton("• Sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_GROUP}"),
+                    InlineKeyboardButton("Mᴇɴᴜ •", callback_data="menu"),
                 ],
-                [
-                    InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
-                    InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
-                ],
-                [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+                [InlineKeyboardButton(text="•ᴄʟᴏsᴇ•", callback_data="cls")],
             ]
         )
         requested_by = message.from_user.first_name
@@ -676,7 +692,7 @@ async def play(_, message: Message):
                             "5️⃣", callback_data=f"plll 4|{query}|{user_id}"
                         ),
                     ],
-                    [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+                    [InlineKeyboardButton(text="•ᴄʟᴏsᴇ•", callback_data="cls")],
                 ]
             )
             await lel.edit(toxxt, reply_markup=koyboard, disable_web_page_preview=True)
@@ -721,14 +737,10 @@ async def play(_, message: Message):
             keyboard = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
-                        InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
+                        InlineKeyboardButton("• Sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_GROUP}"),
+                        InlineKeyboardButton("ᴍᴇɴᴜ •", callback_data="menu"),
                     ],
-                    [
-                        InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
-                        InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
-                    ],
-                    [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+                    [InlineKeyboardButton(text="•ᴄʟᴏsᴇ•", callback_data="cls")],
                 ]
             )
             requested_by = message.from_user.first_name
@@ -811,10 +823,10 @@ async def ytplay(_, message: Message):
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message.chat.id, "Eagle joined this group for playing music in VC"
+                        message.chat.id, "Assistant joined this group for playing music in VC"
                     )
                     await lel.edit(
-                        "<b>Eagle helper userbot joined your chat</b>",
+                        "<b>Assistant helper userbot joined your chat</b>",
                     )
 
                 except UserAlreadyParticipant:
@@ -877,14 +889,10 @@ async def ytplay(_, message: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
-                InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
+                InlineKeyboardButton("• Sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_GROUP}"),
+                InlineKeyboardButton("Mᴇɴᴜ •", callback_data="menu"),
             ],
-            [
-                InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
-                InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
-            ],
-            [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+            [InlineKeyboardButton(text="•ᴄʟᴏsᴇ•", callback_data="cls")],
         ]
     )
     requested_by = message.from_user.first_name
@@ -1020,15 +1028,15 @@ async def jiosaavn(client: Client, message_: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
-                InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
+                InlineKeyboardButton("📖 Pʟᴀʏʟɪsᴛ", callback_data="playlist"),
+                InlineKeyboardButton("Mᴇɴᴜ ⏯ ", callback_data="menu"),
             ],
             [
                 InlineKeyboardButton(
-                    text="Join Support Group", url=f"https://t.me/EagleSupport"
+                    text="sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/EagleSupport"
                 )
             ],
-            [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+            [InlineKeyboardButton(text="•ᴄʟᴏsᴇ•", callback_data="cls")],
         ]
     )
     file = await convert(wget.download(slink))
@@ -1133,14 +1141,10 @@ async def lol_cb(b, cb):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
-                InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
+                InlineKeyboardButton("• Sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_GROUP}"),
+                InlineKeyboardButton("Mᴇɴᴜ •", callback_data="menu"),
             ],
-            [
-                InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
-                InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
-            ],
-            [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+            [InlineKeyboardButton(text="•ᴄʟᴏsᴇ•", callback_data="cls")],
         ]
     )
     requested_by = useer_name
