@@ -22,7 +22,7 @@
 
 ### Deploy to Heroku
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Kingache/clone-xmarty_mysic3)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Kingache/MusicEagle)
 
 Get pyrogram (p)  `SESSION` from here:
 
