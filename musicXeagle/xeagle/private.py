@@ -40,7 +40,7 @@ def _start(client, message):
 @Client.on_message(filters.command("start") & ~filters.private & ~filters.channel)
 async def gstart(_, message: Message):
     await message.reply_text(
-        f"""**🔴 XmartyMusic is online**""",
+        f"""**Eagle Music is online**""",
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("💬 Support Chat", url=f"https://t.me/EagleSupport")]])
     )
 
@@ -85,7 +85,7 @@ def map(pos):
                     InlineKeyboardButton("➕ Add me to your Group 🙋‍♀️", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
                   ],
                   [
-                    InlineKeyboardButton(text="📲 Updates", url=f"https://t.me/infobotrelax"),
+                    InlineKeyboardButton(text="📲 Updates", url=f"https://t.me/Infobotrelax"),
                     InlineKeyboardButton(text="💬 Support", url=f"https://t.me/EagleSupport")
                   ],
                   [
