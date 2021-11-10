@@ -22,36 +22,19 @@ async def cbstart(_, query: CallbackQuery):
 💡 **Find out all the Bot's commands and how they work by clicking on the » 📚 Commands button!**
 🔖 **To know how to use this bot, please click on the » ❓ Basic Guide button!**""",
         reply_markup=InlineKeyboardMarkup(
+            [[
+               InlineKeyboardButton("➕ Add me to your Group 🙋‍♀️", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+            ],
             [
-                [
-                    InlineKeyboardButton(
-                        "➕ ᴀᴅᴅ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕",
-                        url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
-                    )
-                ],
-                [InlineKeyboardButton("ʙᴀsɪᴄ ɢᴜɪᴅᴇ", callback_data="cbhowtouse")],
-                [
-                    InlineKeyboardButton("ᴄᴏᴍᴍᴀɴᴅs", callback_data="cbcmds"),
-                    InlineKeyboardButton("ᴏᴡɴᴇʀ", url=f"https://t.me/{OWNER_NAME}"),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "ᴏꜰꜰɪᴄɪᴀʟ ɢʀᴏᴜᴘ", url=f"https://t.me/{SUPPORT_GROUP}"
-                    ),
-                    InlineKeyboardButton(
-                        "ᴏꜰꜰɪᴄɪᴀʟ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}"
-                    ),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "••ᴛᴜᴛᴜᴘ••", callback_data="close"
-                    )
-                ],
-            ]
+               InlineKeyboardButton("📲 Updates", url=f"https://t.me/{UPDATES_CHANNEL}"),
+               InlineKeyboardButton("💬 Support", url=f"https://t.me/{SUPPORT_GROUP}")
+            ],
+            [
+               InlineKeyboardButton("🛠 Source Code 🛠", url=f"https://{SOURCE_CODE}")
+           ]]
         ),
-        disable_web_page_preview=True,
+        reply_to_message_id=message.message_id,
     )
-
 
 @Client.on_callback_query(filters.regex("cbhelp"))
 async def cbhelp(_, query: CallbackQuery):
@@ -101,10 +84,6 @@ async def cbadvanced(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""🏮 **here is the advanced commands**
 /start (in group) - see the bot alive status
-/reload - reload bot and refresh the admin list
-/ping - check the bot ping status
-/uptime - check the bot uptime status
-/id - show the group/user id & other
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbhelp")]]
@@ -123,10 +102,6 @@ async def cbadmin(_, query: CallbackQuery):
 /end - stop music streaming
 /join - invite userbot join to your group
 /leave - order the userbot to leave your group
-/auth - authorized user for using music bot
-/unauth - unauthorized for using music bot
-/control - open the player settings panel
-/delcmd (on | off) - enable / disable del cmd feature
 /music (on / off) - disable / enable music player in your group
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
