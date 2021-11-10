@@ -1,15 +1,41 @@
-import logging
+from time import time
+from datetime import datetime
 from musicXeagle.xeagle.msg import Messages as tr
+from musicXeagle.helpers.filters import command
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from musicXeagle.config import SOURCE_CODE,ASSISTANT_NAME,PROJECT_NAME,SUPPORT_GROUP,UPDATES_CHANNEL,BOT_USERNAME
 logging.basicConfig(level=logging.INFO)
 
-@Client.on_message(filters.private & filters.incoming & filters.command(['start']))
-def _start(client, message):
-    client.send_message(message.chat.id,
-        text=tr.START_MSG.format(message.from_user.first_name, message.from_user.id),
-        parse_mode="markdown",
+
+START_TIME = datetime.utcnow()
+START_TIME_ISO = START_TIME.replace(microsecond=0).isoformat()
+TIME_DURATION_UNITS = (
+    ("week", 60 * 60 * 24 * 7),
+    ("days", 60 * 60 * 24),
+    ("h", 60 * 60),
+    ("m", 60),
+    ("s", 1)
+)
+
+async def _human_time_duration(seconds):
+    if seconds == 0:
+        return 'inf'
+    parts = []
+    for unit, div in TIME_DURATION_UNITS:
+        amount, seconds = divmod(int(seconds), div)
+        if amount > 0:
+            parts.append('{} {}{}'
+                         .format(amount, unit, "" if amount == 1 else "s"))
+    return ', '.join(parts)
+
+
+@Client.on_message(command("start") & filters.private & ~filters.edited)
+async def start_(client: Client, message: Message):
+    await message.reply_text(
+        f"""<b>👋 **ʜᴇʟʟᴏ {message.from_user.mention} ᴊᴀᴍᴇᴛ**</b> ❗
+**[{BOT_NAME}](https://t.me/{BOT_USERNAME}) ᴀᴅᴀʟᴀʜ ʙᴏᴛ ʏᴀɴɢ ᴅɪʀᴀɴᴄᴀɴɢ ᴜɴᴛᴜᴋ ᴍᴇᴍᴜᴛᴀʀ ᴍᴜsɪᴋ ᴅɪ ɢʀᴜᴘ ᴏʙʀᴏʟᴀɴ sᴜᴀʀᴀ ᴀɴᴅᴀ!**
+**ᴜɴᴛᴜᴋ ᴍᴇʟɪʜᴀᴛ ʙᴇʙᴇʀᴀᴘᴀ ᴘᴇʀɪɴᴛᴀʜ ᴅᴀʟᴀᴍ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ ʙᴏᴛ ɪɴɪ, ᴋʟɪᴋ » /help**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
