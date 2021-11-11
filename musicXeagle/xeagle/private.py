@@ -26,7 +26,6 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from musicXeagle.config import BOT_USERNAME, BOT_NAME, ASSISTANT_NAME, OWNER_NAME, UPDATES_CHANNEL, SUPPORT_GROUP, SOURCE_CODE
 from musicXeagle.helpers.filters import command
-from musicXeagle.helpers.decorators import sudo_users_only, authorized_users_only
 
 
 START_TIME = datetime.utcnow()
@@ -131,7 +130,6 @@ async def help(client: Client, message: Message):
 
 
 @Client.on_message(filters.command(["ping", f"ping@{BOT_USERNAME}"]) & ~filters.edited)
-@authorized_users_only
 async def ping_pong(client: Client, message: Message):
     start = time()
     m_reply = await message.reply_text("`Pinging...`")
@@ -147,7 +145,6 @@ async def ping_pong(client: Client, message: Message):
 
 
 @Client.on_message(command(["uptime", f"uptime@{BOT_USERNAME}"]) & ~filters.edited)
-@sudo_users_only
 async def get_uptime(client: Client, message: Message):
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
