@@ -411,7 +411,7 @@ async def cmdhome(_, query: CallbackQuery):
     bttn = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("ᴄᴏᴍᴍᴀɴᴅ", callback_data="nocmd")
+                InlineKeyboardButton("ᴄᴏᴍᴍᴀɴᴅ", callback_data="cmdp")
             ],[
                 InlineKeyboardButton("ᴛᴜᴛᴜᴘ", callback_data="close")
             ]
@@ -423,7 +423,7 @@ async def cmdhome(_, query: CallbackQuery):
     await query.edit_message_text(nofound, reply_markup=bttn)
 
 
-@Client.on_callback_query(filters.regex("nocmd"))
+@Client.on_callback_query(filters.regex("cmdp"))
 async def cmdsyntax(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""**Command** to play music on **Voice Chat:**
