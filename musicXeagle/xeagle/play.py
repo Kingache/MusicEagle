@@ -35,6 +35,7 @@ from musicXeagle.config import ASSISTANT_NAME
 from musicXeagle.config import BOT_NAME as bn
 from musicXeagle.config import DURATION_LIMIT
 from musicXeagle.config import SUPPORT_GROUP
+from musicXeagle.config import THUMB_IMG
 from musicXeagle.config import UPDATES_CHANNEL as updateschannel
 from musicXeagle.config import que
 from musicXeagle.function.admins import admins as a
@@ -602,8 +603,11 @@ async def play(_, message: Message):
             views = results[0]["views"]
 
         except Exception as e:
-            await lel.edit(
-                "Song not found.Try another song or maybe spell it properly."
+            await lel.delete()
+            await message.reply_photo(
+                photo=f"{THUMB_IMG}",
+                caption=nofound,
+                reply_markup=bttn,
             )
             print(str(e))
             return
