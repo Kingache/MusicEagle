@@ -403,3 +403,36 @@ async def cbmoon(_, query: CallbackQuery):
             ]
         ),
     )
+
+
+@Client.on_callback_query(filters.regex("cmdhome"))
+async def cmdhome(_, query: CallbackQuery):
+    
+    bttn = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("ᴄᴏᴍᴍᴀɴᴅ", callback_data="nocmd")
+            ],[
+                InlineKeyboardButton("ᴛᴜᴛᴜᴘ", callback_data="close")
+            ]
+        ]
+    )
+    
+    nofound = "😕 **couldn't find song you requested**\n\n» **please provide the correct song name or include the artist's name as well**"
+    
+    await query.edit_message_text(nofound, reply_markup=bttn)
+
+
+@Client.on_callback_query(filters.regex("nocmd"))
+async def cmdsyntax(_, query: CallbackQuery):
+    await query.edit_message_text(
+        f"""**Command** to play music on **Voice Chat:**
+
+• `/play (query)` - for playing music via youtube
+• `/ytp (query)` - for playing music directly via youtube
+
+Updates channel [Click here](https://t.me/{UPDATES_CHANNEL})""",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cmdhome")]]
+        ),
+    )
