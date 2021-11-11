@@ -451,6 +451,19 @@ async def m_cb(b, cb):
 
 @Client.on_message(command("play") & other_filters)
 async def play(_, message: Message):
+
+    bttn = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("ᴄᴏᴍᴍᴀɴᴅ", callback_data="cmdp")
+            ],[
+                InlineKeyboardButton("ᴛᴜᴛᴜᴘ", callback_data="close")
+            ]
+        ]
+    )
+
+    nofound = "❌ **couldn't find song you requested**\n\n» **please provide the correct song name or include the artist's name as well**"
+
     global que
     global useer
     if message.chat.id in DISABLED_GROUPS:
