@@ -22,18 +22,20 @@ async def cbstart(_, query: CallbackQuery):
 💡 **Find out all the Bot's commands and how they work by clicking on the » 📚 Commands button!**
 🔖 **To know how to use this bot, please click on the » ❓ Basic Guide button!**""",
         reply_markup=InlineKeyboardMarkup(
-            [[
-               InlineKeyboardButton("➕ Add me to your Group 🙋‍♀️", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
-            ],
             [
-               InlineKeyboardButton("📲 Updates", url=f"https://t.me/{UPDATES_CHANNEL}"),
-               InlineKeyboardButton("💬 Support", url=f"https://t.me/{SUPPORT_GROUP}")
-            ],
-            [
-               InlineKeyboardButton("🛠 Source Code 🛠", url=f"https://{SOURCE_CODE}")
-           ]]
+                [
+                   InlineKeyboardButton("➕ Add me to your Group 🙋‍♀️", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+                ],
+                [
+                   InlineKeyboardButton("📲 Updates", url=f"https://t.me/{UPDATES_CHANNEL}"),
+                   InlineKeyboardButton("💬 Support", url=f"https://t.me/{SUPPORT_GROUP}")
+                ],
+                [
+                   InlineKeyboardButton("🛠 Source Code 🛠", url=f"https://{SOURCE_CODE}")
+               ]
+            ]
         ),
-        reply_to_message_id=message.message_id,
+     disable_web_page_preview=True,
     )
 
 @Client.on_callback_query(filters.regex("cbhelp"))
@@ -46,14 +48,18 @@ async def cbhelp(_, query: CallbackQuery):
             [
                 [
                     InlineKeyboardButton("ʙᴀsɪᴄ ᴄᴍᴅ", callback_data="cbbasic"),
-                    InlineKeyboardButton("ᴀᴅᴠᴀɴᴄᴇᴅ ᴄᴍᴅ", callback_data="cbadvanced"),
+                    InlineKeyboardButton("ᴀᴅᴠᴀɴᴄᴇᴅ ᴄᴍᴅ", callback_data="cbadvanced")
                 ],
                 [
                     InlineKeyboardButton("ᴀᴅᴍɪɴ ᴄᴍᴅ", callback_data="cbadmin"),
                     InlineKeyboardButton("sᴜᴅᴏ ᴄᴍᴅ", callback_data="cbsudo"),
                 ],
-                [InlineKeyboardButton("ᴏᴡɴᴇʀ ᴄᴍᴅ", callback_data="cbowner")],
-                [InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbguide")],
+                [
+                    InlineKeyboardButton("ᴏᴡɴᴇʀ ᴄᴍᴅ", callback_data="cbowner")
+                ],
+                [
+                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbguide")
+                ]
             ]
         ),
     )
@@ -74,7 +80,11 @@ async def cbbasic(_, query: CallbackQuery):
 /lyric - (song name) lyrics scrapper
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbhelp")]]
+            [
+                [    
+                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbhelp")
+                ]
+            ]
         ),
     )
 
@@ -86,7 +96,11 @@ async def cbadvanced(_, query: CallbackQuery):
 /start (in group) - see the bot alive status
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbhelp")]]
+            [
+                [
+                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbhelp")
+                ]
+            ]
         ),
     )
 
@@ -105,7 +119,11 @@ async def cbadmin(_, query: CallbackQuery):
 /music (on / off) - disable / enable music player in your group
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbhelp")]]
+            [
+                [
+                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbhelp")
+                ]
+            ]
         ),
     )
 
@@ -122,7 +140,11 @@ async def cbsudo(_, query: CallbackQuery):
 /sh (query) - run code
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbhelp")]]
+            [
+                [
+                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbhelp")
+                ]   
+            ]
         ),
     )
 
@@ -139,7 +161,11 @@ async def cbowner(_, query: CallbackQuery):
 📝 note: all commands owned by this bot can be executed by the owner of the bot without any exceptions.
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbhelp")]]
+            [
+                [
+                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbhelp")
+                ]
+            ]
         ),
     )
 
@@ -157,8 +183,12 @@ async def cbguide(_, query: CallbackQuery):
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("ᴄᴏᴍᴍᴀɴᴅ ʟɪsᴛ", callback_data="cbhelp")],
-                [InlineKeyboardButton("••ᴛᴜᴛᴜᴘ••", callback_data="close")],
+                [
+                    InlineKeyboardButton("ᴄᴏᴍᴍᴀɴᴅ ʟɪsᴛ", callback_data="cbhelp")
+                ],
+                [
+                    InlineKeyboardButton("••ᴛᴜᴛᴜᴘ••", callback_data="close")
+                ],
             ]
         ),
     )
@@ -183,8 +213,12 @@ async def cbback(_, query: CallbackQuery):
                     InlineKeyboardButton("⏩ skip", callback_data="cbskip"),
                     InlineKeyboardButton("⏹ stop", callback_data="cbend"),
                 ],
-                [InlineKeyboardButton("ᴀɴᴛɪ ᴄᴍᴅ", callback_data="cbdelcmds")],
-                [InlineKeyboardButton("••ᴛᴜᴛᴜᴘ••", callback_data="close")],
+                [
+                    InlineKeyboardButton("ᴀɴᴛɪ ᴄᴍᴅ", callback_data="cbdelcmds")
+                ],
+                [
+                    InlineKeyboardButton("••ᴛᴜᴛᴜᴘ••", callback_data="close")
+                ]
             ]
         ),
     )
@@ -206,7 +240,11 @@ async def cbdelcmds(_, query: CallbackQuery):
       
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbback")]]
+            [
+                [
+                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbback")
+                ]
+            ]
         ),
     )
 
@@ -227,8 +265,12 @@ async def cbhelps(_, query: CallbackQuery):
                     InlineKeyboardButton("ᴀᴅᴍɪɴ ᴄᴍᴅ", callback_data="cblamp"),
                     InlineKeyboardButton("sᴜᴅᴏ ᴄᴍᴅ", callback_data="cblab"),
                 ],
-                [InlineKeyboardButton("ᴏᴡɴᴇʀ ᴄᴍᴅ", callback_data="cbmoon")],
-                [InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbstart")],
+                [
+                    InlineKeyboardButton("ᴏᴡɴᴇʀ ᴄᴍᴅ", callback_data="cbmoon")
+                ],
+                [
+                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbstart")
+                ]
             ]
         ),
     )
@@ -246,7 +288,11 @@ async def cbguides(_, query: CallbackQuery):
 📌 **if the userbot not joined to video chat, make sure if the video chat already turned on, or type /leave then type /join again.**
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbstart")]]
+            [
+                [
+                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbstart")
+                ]
+            ]
         ),
     )
 
@@ -266,7 +312,11 @@ async def cblocal(_, query: CallbackQuery):
 /lyric - (song name) lyrics scrapper
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbcmds")]]
+            [
+                [
+                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbcmds")
+                ]
+            ]
         ),
     )
 
@@ -282,7 +332,11 @@ async def cbadven(_, query: CallbackQuery):
 /id - show the group/user id & other
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbcmds")]]
+            [
+                [
+                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbcmds")
+                ]
+            ]
         ),
     )
 
@@ -304,7 +358,11 @@ async def cblamp(_, query: CallbackQuery):
 /music (on / off) - disable / enable music player in your group
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbcmds")]]
+            [
+                [
+                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbcmds")
+                ]
+            ]
         ),
     )
 
@@ -321,7 +379,11 @@ async def cblab(_, query: CallbackQuery):
 /sh (query) - run code
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbcmds")]]
+            [
+                [
+                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbcmds")
+                ]
+            ]
         ),
     )
 
@@ -334,6 +396,10 @@ async def cbmoon(_, query: CallbackQuery):
 📝 note: all commands owned by this bot can be executed by the owner of the bot without any exceptions.
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbcmds")]]
+            [
+                [
+                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbcmds")
+                ]
+            ]
         ),
     )
