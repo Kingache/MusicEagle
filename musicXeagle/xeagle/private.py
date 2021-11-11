@@ -4,7 +4,14 @@ from musicXeagle.xeagle.msg import Messages as tr
 from musicXeagle.helpers.filters import command
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-from musicXeagle.config import SOURCE_CODE,ASSISTANT_NAME,PROJECT_NAME,SUPPORT_GROUP,UPDATES_CHANNEL,BOT_USERNAME
+from musicXeagle.config import (
+    SOURCE_CODE, 
+    ASSISTANT_NAME, 
+    PROJECT_NAME, 
+    SUPPORT_GROUP, 
+    UPDATES_CHANNEL,
+    BOT_USERNAME,
+)
 
 
 START_TIME = datetime.utcnow()
@@ -52,7 +59,7 @@ async def start_(client: Client, message: Message):
         reply_to_message_id=message.message_id
         )
 
-@Client.on_message(filters.command(["start","start@Eagle_Xrobot"]) & ~filters.private & ~filters.channel)
+@Client.on_message(filters.command(["start", f"start@{BOT_USERNAME}"]) & filters.group & ~filters.channel)
 async def gstart(_, message: Message):
     await message.reply_text(
         f"""**{PROJECT_NAME} is online.**""",
@@ -123,7 +130,7 @@ def map(pos):
         ]
     return button
 
-@Client.on_message(filters.command(["help","help@Eagle_Xrobot"]) & ~filters.private & ~filters.channel)
+@Client.on_message(filters.command(["help", f"help@{BOT_USERNAME}"]) & filters.group & ~filters.channel)
 async def ghelp(_, message: Message):
     await message.reply_text(
         f"""**Hello there! I can play music in the voice chats of telegram groups & channels.**""",
