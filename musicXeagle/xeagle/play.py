@@ -712,8 +712,11 @@ async def play(_, message: Message):
                 views = results[0]["views"]
 
             except Exception as e:
-                await lel.edit(
-                    "Song not found.Try another song or maybe spell it properly."
+                await lel.delete()
+                await message.reply_photo(
+                    photo=f"{THUMB_IMG}",
+                    caption=nofound,
+                    reply_markup=bttn,
                 )
                 print(str(e))
                 return
@@ -1080,6 +1083,17 @@ async def jiosaavn(client: Client, message_: Message):
 
 @Client.on_callback_query(filters.regex(pattern=r"plll"))
 async def lol_cb(b, cb):
+
+    bttn = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("ᴄᴏᴍᴍᴀɴᴅ", callback_data="cmdp")
+            ],[
+                InlineKeyboardButton("ᴛᴜᴛᴜᴘ", callback_data="close")
+            ]
+        ]
+    )
+    nofound = "❌ **couldn't find song you requested**\n\n» **please provide the correct song name or include the artist's name as well**"
     global que
 
     cbd = cb.data.strip()
@@ -1089,7 +1103,11 @@ async def lol_cb(b, cb):
     try:
         x, query, useer_id = typed_.split("|")
     except:
-        await cb.message.edit("Song Not Found")
+        await cb.message.reply_photo(
+            photo=f"{THUMB_IMG}",
+            caption=nofound,
+            reply_markup=bttn,
+        )
         return
     useer_id = int(useer_id)
     if cb.from_user.id != useer_id:
