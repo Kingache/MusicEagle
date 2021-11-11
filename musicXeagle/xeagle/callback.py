@@ -35,7 +35,7 @@ async def cbstart(_, query: CallbackQuery):
                ]
             ]
         ),
-     disable_web_page_preview=True,
+     disable_web_page_preview=True
     )
 
 @Client.on_callback_query(filters.regex("cbhelp"))
