@@ -45,12 +45,14 @@ async def start_(client: Client, message: Message):
                 [
                     InlineKeyboardButton(
                         "➕ Add me to your Group ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
+                ],
                 [
                     InlineKeyboardButton(
                         "👥 Group", url=f"https://t.me/{SUPPORT_GROUP}"), 
                     InlineKeyboardButton(
                         "Channel 📢", url=f"https://t.me/{UPDATES_CHANNEL}")
-                ],[
+                ],
+                [
                     InlineKeyboardButton(
                         "🧩 Source Code ", url=f"https://{SOURCE_CODE}")
                 ]
@@ -117,7 +119,7 @@ def map(pos):
         url = f"https://t.me/{SUPPORT_GROUP}"
         button = [
             [InlineKeyboardButton("➕ Add me to your Group ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
-            [InlineKeyboardButton(text = '👥 Group', url=f"https://t.me/{SUPPORT_GROUP}"),
+            [InlineKeyboardButton(text = '👥 Group', url=f"https://t.me/{SUPPORT_GROUP}")
              InlineKeyboardButton(text = 'Channel 📢', url=f"https://t.me/{UPDATES_CHANNEL}")],
             [InlineKeyboardButton(text = '🧩 Source Code', url=f"https://{SOURCE_CODE}")],
             [InlineKeyboardButton(text = '☚ Back', callback_data = f"help+{pos-1}")]
