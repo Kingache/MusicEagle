@@ -674,7 +674,7 @@ async def play(_, message: Message):
                             "5️⃣", callback_data=f"plll 4|{query}|{user_id}"
                         ),
                     ],
-                    [InlineKeyboardButton(text="•ᴄʟᴏsᴇ•", callback_data="cls")],
+                    [InlineKeyboardButton(text="••ᴄʟᴏsᴇ••", callback_data="cls")],
                 ]
             )
             await lel.edit(toxxt, reply_markup=koyboard, disable_web_page_preview=True)
@@ -739,7 +739,7 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"🏷 **Name:** [{title[:35]}...]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
+            caption=f"#⃣ Your requested song <b>queued</b> at position {position}!",
             reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -761,8 +761,9 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption=f"🏷 **Name:** [{title[:70]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n"
-            + f"🎧 **Request by:** {message.from_user.mention}",
+            caption="▶️ <b>Playing</b> here the song requested by {} via Youtube Music".format(
+                message.from_user.mention()
+            ),
         )
         os.remove("final.png")
         return await lel.delete()
@@ -890,7 +891,7 @@ async def ytplay(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"🏷 **Name:** [{title[:35]}...]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
+            caption=f"#⃣ Your requested song <b>queued</b> at position {position}!",
             reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -912,8 +913,9 @@ async def ytplay(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption=f"🏷 **Name:** [{title[:70]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n"
-            + f"🎧 **Request by:** {message.from_user.mention}",
+            caption="▶️ <b>Playing</b> here the song requested by {} via Youtube Music".format(
+                message.from_user.mention()
+            ),
         )
         os.remove("final.png")
         return await lel.delete()
@@ -1145,7 +1147,7 @@ async def lol_cb(b, cb):
         await b.send_photo(
             chat_id,
             photo="final.png",
-            caption=f"🏷 **Name:** [{title[:35]}...]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
+            caption=f"#⃣  Song requested by {r_by.mention()} <b>queued</b> at position {position}!",
             reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -1168,6 +1170,6 @@ async def lol_cb(b, cb):
             chat_id,
             photo="final.png",
             reply_markup=keyboard,
-            caption=f"🏷 **Name:** [{title[:35]}...]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
+            caption=f"▶️ <b>Playing</b> here the song requested by {r_by.mention()} via Youtube Music",
         )
         os.remove("final.png")
