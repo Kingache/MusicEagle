@@ -288,7 +288,7 @@ async def p_cb(b, cb):
     type_ = cb.matches[0].group(1)
     cb.message.chat.id
     cb.message.chat
-    cb.message.reply_markup.inline_keyboard[1][0].callback_data
+    cb.message.reply_markup.inline_keyboard[0][0].callback_data
     if type_ == "playlist":
         queue = que.get(cb.message.chat.id)
         if not queue:
@@ -331,7 +331,7 @@ async def m_cb(b, cb):
     cb.message.chat.id
     m_chat = cb.message.chat
 
-    the_data = cb.message.reply_markup.inline_keyboard[1][0].callback_data
+    the_data = cb.message.reply_markup.inline_keyboard[0][0].callback_data
     if type_ == "pause":
         (
             await cb.answer("Music Paused!")
