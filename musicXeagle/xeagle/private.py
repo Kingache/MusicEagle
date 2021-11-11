@@ -57,7 +57,7 @@ async def start_(client: Client, message: Message):
             ]
         ),
         reply_to_message_id=message.message_id
-        )
+    )
 
 @Client.on_message(filters.command(["start", f"start@{BOT_USERNAME}"]) & filters.group & ~filters.channel)
 async def gstart(_, message: Message):
