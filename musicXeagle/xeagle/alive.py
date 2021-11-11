@@ -61,18 +61,22 @@ async def _human_time_duration(seconds):
 
 @Client.on_message(filters.command(["alive", f"alive@{BOT_USERNAME}"]))
 async def alive(client: Client, message: Message):
+    konsols = message.chat.id
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
-    await message.reply_photo(
+    await client.send_photo(
+        konsols,
         photo=f"{ALIVE_IMG}",
-        caption=f"""**Hallo, I'm [{BOT_NAME}](https://t.me/{BOT_USERNAME})**
+        caption=f"""**Hallo {message.from_user.mention()}, I'm [{BOT_NAME}](https://t.me/{BOT_USERNAME})**
+
 ╭✠╼━━━━━━❖━━━━━━━❖━━✠╮
 ┣[• **Have you played music today?**
 ┣[• **Bot : 6.0 LATEST**
 ┣[• **Tuhan : [{OWNER_NAME}](https://t.me/{OWNER_NAME})**
 ┣[• **Uptime : `{uptime}`**
 ╰✠╼━━━━━━❖━━━━━━━❖━━✠╯
+
 **Thanks For Using Me** 🌻""",
         reply_markup=InlineKeyboardMarkup(
             [
