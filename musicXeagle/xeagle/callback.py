@@ -418,7 +418,7 @@ async def cmdhome(_, query: CallbackQuery):
         ]
     )
     
-    nofound = "😕 **couldn't find song you requested**\n\n» **please provide the correct song name or include the artist's name as well**"
+    nofound = "❌ **couldn't find song you requested**\n\n» **please provide the correct song name or include the artist's name as well**"
     
     await query.edit_message_text(nofound, reply_markup=bttn)
 
