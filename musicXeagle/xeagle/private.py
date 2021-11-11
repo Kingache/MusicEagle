@@ -56,7 +56,7 @@ async def start_(client: Client, message: Message):
                 ]
             ]
         ),
-        reply_to_message_id=message.message_id
+     disable_web_page_preview=True
     )
 
 @Client.on_message(filters.command(["start", f"start@{BOT_USERNAME}"]) & filters.group & ~filters.channel)
@@ -80,6 +80,7 @@ async def gstart(_, message: Message):
                 ]
             ]
         ),
+     disable_web_page_preview=True
     )
 
 
@@ -133,7 +134,7 @@ def map(pos):
 @Client.on_message(filters.command(["help", f"help@{BOT_USERNAME}"]) & filters.group & ~filters.channel)
 async def ghelp(_, message: Message):
     await message.reply_text(
-        f"""**Hello there! I can play music in the voice chats of telegram groups & channels.**""",
+        f"""**Hello {message.from_user.mention()}! I can play music in the voice chats of telegram groups & channels.**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -143,4 +144,5 @@ async def ghelp(_, message: Message):
                 ]
             ]
         ),
+     disable_web_page_preview=True
     )
