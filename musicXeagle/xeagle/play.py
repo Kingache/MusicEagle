@@ -31,6 +31,7 @@ from Python_ARQ import ARQ
 from youtube_search import YoutubeSearch
 
 from musicXeagle.config import ARQ_API_KEY
+from musicXeagle.config import ASSISTANT_NAME
 from musicXeagle.config import BOT_NAME as bn
 from musicXeagle.config import DURATION_LIMIT
 from musicXeagle.config import SUPPORT_GROUP
@@ -197,7 +198,7 @@ def r_ply(type_):
             [
                 InlineKeyboardButton("ᴘʟᴀʏʟɪsᴛ", "playlist"),
             ],
-            [InlineKeyboardButton("•ᴄʟᴏsᴇ•", "cls")],
+            [InlineKeyboardButton("ᴄʟᴏsᴇ", "cls")],
         ]
     )
     return mar
@@ -409,7 +410,7 @@ async def m_cb(b, cb):
                 [
                     InlineKeyboardButton("ᴘʟᴀʏʟɪsᴛ", "playlist"),
                 ],
-                [InlineKeyboardButton("•ᴄʟᴏsᴇ•", "cls")],
+                [InlineKeyboardButton("ᴄʟᴏsᴇ", "cls")],
             ]
         )
         await cb.message.edit(stats, reply_markup=marr)
@@ -485,10 +486,10 @@ async def play(_, message: Message):
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message.chat.id, "Xmarty joined this group for playing music in VC"
+                        message.chat.id, "✅ **userbot succesfully entered chat**"
                     )
                     await lel.edit(
-                        "<b>Assistant helper userbot joined your chat</b>",
+                        "<b>Helper userbot joined your chat</b>",
                     )
 
                 except UserAlreadyParticipant:
@@ -497,7 +498,7 @@ async def play(_, message: Message):
                     # print(e)
                     await lel.edit(
                         f"<b>🔴 Flood Wait Error 🔴 \nUser {user.first_name} couldn't join your group due to heavy requests for userbot! Make sure user is not banned in group."
-                        "\n\nOr manually add assistant to your Group and try again</b>",
+                        "\n\nOr manually add @{ASSISTANT_NAME} to your Group and try again</b>",
                     )
     try:
         await USER.get_chat(chid)
@@ -555,7 +556,7 @@ async def play(_, message: Message):
                     InlineKeyboardButton("• Sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_GROUP}"),
                     InlineKeyboardButton("Mᴇɴᴜ •", callback_data="menu"),
                 ],
-                [InlineKeyboardButton(text="•ᴄʟᴏsᴇ•", callback_data="cls")],
+                [InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="cls")],
             ]
         )
         file_name = get_file_name(audio)
@@ -614,7 +615,7 @@ async def play(_, message: Message):
                     InlineKeyboardButton("• Sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_GROUP}"),
                     InlineKeyboardButton("Mᴇɴᴜ •", callback_data="menu"),
                 ],
-                [InlineKeyboardButton(text="•ᴄʟᴏsᴇ•", callback_data="cls")],
+                [InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="cls")],
             ]
         )
         requested_by = message.from_user.first_name
@@ -721,7 +722,7 @@ async def play(_, message: Message):
                         InlineKeyboardButton("• Sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_GROUP}"),
                         InlineKeyboardButton("ᴍᴇɴᴜ •", callback_data="menu"),
                     ],
-                    [InlineKeyboardButton(text="•ᴄʟᴏsᴇ•", callback_data="cls")],
+                    [InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="cls")],
                 ]
             )
             requested_by = message.from_user.first_name
@@ -738,7 +739,7 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"#⃣ Your requested song <b>queued</b> at position {position}!",
+            caption=f"🏷 **Name:** [{title[:35]}...]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
             reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -760,8 +761,8 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="▶️ <b>Playing</b> here the song requested by {} via Youtube Music".format(
-                message.from_user.mention()
+            caption=f"🏷 **Name:** [{title[:70]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n"
+            + f"🎧 **Request by:** {message.from_user.mention}",
             ),
         )
         os.remove("final.png")
@@ -807,7 +808,7 @@ async def ytplay(_, message: Message):
                         message.chat.id, "Assistant joined this group for playing music in VC"
                     )
                     await lel.edit(
-                        "<b>Assistant helper userbot joined your chat</b>",
+                        "<b>Helper userbot joined your chat</b>",
                     )
 
                 except UserAlreadyParticipant:
@@ -816,7 +817,7 @@ async def ytplay(_, message: Message):
                     # print(e)
                     await lel.edit(
                         f"<b>🔴 Flood Wait Error 🔴 \nUser {user.first_name} couldn't join your group due to heavy requests for userbot! Make sure user is not banned in group."
-                        "\n\nOr manually add assistant to your Group and try again</b>",
+                        "\n\nOr manually add @{ASSISTANT_NAME} to your Group and try again</b>",
                     )
     try:
         await USER.get_chat(chid)
@@ -873,7 +874,7 @@ async def ytplay(_, message: Message):
                 InlineKeyboardButton("• Sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_GROUP}"),
                 InlineKeyboardButton("Mᴇɴᴜ •", callback_data="menu"),
             ],
-            [InlineKeyboardButton(text="•ᴄʟᴏsᴇ•", callback_data="cls")],
+            [InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="cls")],
         ]
     )
     requested_by = message.from_user.first_name
@@ -890,7 +891,7 @@ async def ytplay(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"#⃣ Your requested song <b>queued</b> at position {position}!",
+            caption=f"🏷 **Name:** [{title[:35]}...]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
             reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -912,8 +913,8 @@ async def ytplay(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="▶️ <b>Playing</b> here the song requested by {} via Youtube Music".format(
-                message.from_user.mention()
+            caption=f"🏷 **Name:** [{title[:70]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n"
+            + f"🎧 **Request by:** {message.from_user.mention}",
             ),
         )
         os.remove("final.png")
@@ -931,7 +932,7 @@ async def jiosaavn(client: Client, message_: Message):
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "XmartyMusic"
+        user.first_name = "music assistant"
     usar = user
     wew = usar.id
     try:
@@ -955,10 +956,10 @@ async def jiosaavn(client: Client, message_: Message):
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message_.chat.id, "Xmarty joined this group for playing music in VC"
+                        message_.chat.id, "Userbot joined this group for playing music in VC"
                     )
                     await lel.edit(
-                        "<b>Xmarty helper userbot joined your chat</b>",
+                        "<b>Helper userbot joined your chat</b>",
                     )
 
                 except UserAlreadyParticipant:
@@ -967,7 +968,7 @@ async def jiosaavn(client: Client, message_: Message):
                     # print(e)
                     await lel.edit(
                         f"<b>🔴 Flood Wait Error 🔴 \nUser {user.first_name} couldn't join your group due to heavy requests for userbot! Make sure user is not banned in group."
-                        "\n\nOr manually add @EagleAssistant to your Group and try again</b>",
+                        "\n\nOr manually add @{ASSISTANT_NAME} to your Group and try again</b>",
                     )
     try:
         await USER.get_chat(chid)
@@ -1009,15 +1010,15 @@ async def jiosaavn(client: Client, message_: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("📖 Pʟᴀʏʟɪsᴛ", callback_data="playlist"),
-                InlineKeyboardButton("Mᴇɴᴜ ⏯ ", callback_data="menu"),
+                InlineKeyboardButton("Pʟᴀʏʟɪsᴛ", callback_data="playlist"),
+                InlineKeyboardButton("Mᴇɴᴜ", callback_data="menu"),
             ],
             [
                 InlineKeyboardButton(
                     text="sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/EagleSupport"
                 )
             ],
-            [InlineKeyboardButton(text="•ᴄʟᴏsᴇ•", callback_data="cls")],
+            [InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="cls")],
         ]
     )
     file = await convert(wget.download(slink))
@@ -1125,7 +1126,7 @@ async def lol_cb(b, cb):
                 InlineKeyboardButton("• Sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_GROUP}"),
                 InlineKeyboardButton("Mᴇɴᴜ •", callback_data="menu"),
             ],
-            [InlineKeyboardButton(text="•ᴄʟᴏsᴇ•", callback_data="cls")],
+            [InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="cls")],
         ]
     )
     requested_by = useer_name
@@ -1146,7 +1147,7 @@ async def lol_cb(b, cb):
         await b.send_photo(
             chat_id,
             photo="final.png",
-            caption=f"#⃣  Song requested by {r_by.mention()} <b>queued</b> at position {position}!",
+            caption=f"🏷 **Name:** [{title[:35]}...]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
             reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -1169,6 +1170,6 @@ async def lol_cb(b, cb):
             chat_id,
             photo="final.png",
             reply_markup=keyboard,
-            caption=f"▶️ <b>Playing</b> here the song requested by {r_by.mention()} via Youtube Music 😎",
+            caption=f"🏷 **Name:** [{title[:35]}...]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
         )
         os.remove("final.png")
