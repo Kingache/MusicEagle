@@ -66,7 +66,7 @@ async def start_(client: Client, message: Message):
                         "⚙️ Command​​", callback_data="cbhelp"
                     ),
                     InlineKeyboardButton(
-                        "❤️ Donate", url=f"https://t.me/{OWNER_NAME}")
+                        "🕵🏻‍♂️ Owner", url=f"https://t.me/{OWNER_NAME}")
                 ],[
                     InlineKeyboardButton(
                         "👥 Official Group​​", url=f"https://t.me/{SUPPORT_GROUP}"
@@ -76,9 +76,6 @@ async def start_(client: Client, message: Message):
                 ],[
                     InlineKeyboardButton(
                         "🛠️ Source Code 🛠️", url=f"{SOURCE_CODE}")
-                ],[
-                    InlineKeyboardButton(
-                        "❔ About me​​", callback_data="cbabout"
                     )
                 ]
             ]
