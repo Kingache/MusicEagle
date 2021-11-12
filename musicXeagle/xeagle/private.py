@@ -78,7 +78,7 @@ async def start_(client: Client, message: Message):
                         "🛠️ Source Code 🛠️", url=f"{SOURCE_CODE}") 
                 ],[
                     InlineKeyboardButton(
-                        "ᴛᴜᴛᴜᴘ", callback_data="close")
+                        "❔ About me​​", callback_data="cbabout"
                     )
                 ]
             ]
