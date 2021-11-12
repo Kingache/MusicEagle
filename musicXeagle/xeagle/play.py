@@ -456,7 +456,7 @@ async def play(_, message: Message):
     bttn = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("ᴄᴏᴍᴍᴀɴᴅ", callback_data="cmdp")
+                InlineKeyboardButton("Cᴏᴍᴍᴀɴᴅ", callback_data="cmdp")
             ],[
                 InlineKeyboardButton("ᴛᴜᴛᴜᴘ", callback_data="close")
             ]
@@ -662,10 +662,9 @@ async def play(_, message: Message):
             ]
 
             while j < 5:
-                toxxt += f"{emojilist[j]} <b>Title - [{results[j]['title']}](https://youtube.com{results[j]['url_suffix']})</b>\n"
-                toxxt += f" ╚ <b>Duration</b> - {results[j]['duration']}\n"
-                toxxt += f" ╚ <b>Views</b> - {results[j]['views']}\n"
-                toxxt += f" ╚ <b>Channel</b> - {results[j]['channel']}\n\n"
+                toxxt += f"{emojilist[j]} <b>Tɪᴛʟᴇ - [{results[j]['title']}](https://youtube.com{results[j]['url_suffix']})</b>\n"
+                toxxt += f" ├ 💡 Dᴜʀᴀᴛɪᴏɴ - `{results[j]['duration']}`\n"
+                toxxt += f" └ ⚡ __Pᴏᴡᴇʀᴇᴅ ʙʏ {BOT_NAME}__\n\n"
 
                 j += 1
             koyboard = InlineKeyboardMarkup(
@@ -756,7 +755,7 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"#⃣ Your requested song <b>queued</b> at position {position}!",
+            caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** [{title[:25]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
             reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -778,8 +777,8 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="▶️ <b>Playing</b> here the song requested by {} via Youtube Music".format(
-                message.from_user.mention()
+            caption=f"🏷 **Name:** [{title[:25]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n"
+            + f"🎧 **Request by:** {message.from_user.mention}",
             ),
         )
         os.remove("final.png")
@@ -907,7 +906,7 @@ async def ytplay(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"#⃣ Your requested song <b>queued</b> at position {position}!",
+            caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** [{title[:25]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
             reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -929,8 +928,8 @@ async def ytplay(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="▶️ <b>Playing</b> here the song requested by {} via Youtube Music".format(
-                message.from_user.mention()
+            caption=f"🏷 **Name:** [{title[:25]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n"
+            + f"🎧 **Request by:** {message.from_user.mention}",
             ),
         )
         os.remove("final.png")
@@ -1052,7 +1051,7 @@ async def jiosaavn(client: Client, message_: Message):
             chat_id=message_.chat.id,
             reply_markup=keyboard,
             photo="final.png",
-            caption=f"✯{bn}✯=#️⃣ Queued at position {position}",
+            caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** [{title[:25]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
         )
 
     else:
@@ -1087,7 +1086,7 @@ async def lol_cb(b, cb):
     bttn = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("ᴄᴏᴍᴍᴀɴᴅ", callback_data="cmdp")
+                InlineKeyboardButton("Cᴏᴍᴍᴀɴᴅ", callback_data="cmdp")
             ],[
                 InlineKeyboardButton("ᴛᴜᴛᴜᴘ", callback_data="close")
             ]
@@ -1177,7 +1176,7 @@ async def lol_cb(b, cb):
         await b.send_photo(
             chat_id,
             photo="final.png",
-            caption=f"#⃣  Song requested by {r_by.mention()} <b>queued</b> at position {position}!",
+            caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** [{title[:25]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
             reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -1200,6 +1199,7 @@ async def lol_cb(b, cb):
             chat_id,
             photo="final.png",
             reply_markup=keyboard,
-            caption=f"▶️ <b>Playing</b> here the song requested by {r_by.mention()} via Youtube Music",
+            caption=f"🏷 **Name:** [{title[:25]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n"
+            + f"🎧 **Request by:** {message.from_user.mention}",
         )
         os.remove("final.png")
