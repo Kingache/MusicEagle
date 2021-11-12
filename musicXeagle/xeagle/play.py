@@ -779,7 +779,6 @@ async def play(_, message: Message):
             reply_markup=keyboard,
             caption=f"🏷 **Name:** [{title[:25]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n"
             + f"🎧 **Request by:** {message.from_user.mention}",
-            ),
         )
         os.remove("final.png")
         return await lel.delete()
@@ -930,7 +929,6 @@ async def ytplay(_, message: Message):
             reply_markup=keyboard,
             caption=f"🏷 **Name:** [{title[:25]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n"
             + f"🎧 **Request by:** {message.from_user.mention}",
-            ),
         )
         os.remove("final.png")
         return await lel.delete()
