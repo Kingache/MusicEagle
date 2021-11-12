@@ -429,7 +429,7 @@ async def cmdsyntax(_, query: CallbackQuery):
         f"""**Command** to play music on **Voice Chat:**
 
 • `/play (query)` - for playing music via youtube
-• `/ytp (query)` - for playing music directly via youtube
+• `/ytplay (query)` - for playing music directly via youtube
 
 Updates channel [Click here](https://t.me/{UPDATES_CHANNEL})""",
         reply_markup=InlineKeyboardMarkup(
