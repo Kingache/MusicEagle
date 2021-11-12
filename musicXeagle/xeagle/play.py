@@ -197,9 +197,9 @@ def r_ply(type_):
                 InlineKeyboardButton("⏭", "skip"),
             ],
             [
-                InlineKeyboardButton("ᴘʟᴀʏʟɪsᴛ", "playlist"),
+                InlineKeyboardButton("📖 Playlist", "playlist"),
             ],
-            [InlineKeyboardButton("ᴄʟᴏsᴇ", "cls")],
+            [InlineKeyboardButton("🗑 Close", "cls")],
         ]
     )
     return mar
@@ -409,9 +409,9 @@ async def m_cb(b, cb):
                     InlineKeyboardButton("⏭", "skip"),
                 ],
                 [
-                    InlineKeyboardButton("ᴘʟᴀʏʟɪsᴛ", "playlist"),
+                    InlineKeyboardButton("📖 Playlist", "playlist"),
                 ],
-                [InlineKeyboardButton("ᴄʟᴏsᴇ", "cls")],
+                [InlineKeyboardButton("🗑 Close", "cls")],
             ]
         )
         await cb.message.edit(stats, reply_markup=marr)
@@ -456,9 +456,9 @@ async def play(_, message: Message):
     bttn = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("Cᴏᴍᴍᴀɴᴅ", callback_data="cmdp")
+                InlineKeyboardButton("Command", callback_data="cmdp")
             ],[
-                InlineKeyboardButton("ᴛᴜᴛᴜᴘ", callback_data="close")
+                InlineKeyboardButton("🗑 Close", callback_data="close")
             ]
         ]
     )
@@ -689,7 +689,7 @@ async def play(_, message: Message):
                             "5️⃣", callback_data=f"plll 4|{query}|{user_id}"
                         ),
                     ],
-                    [InlineKeyboardButton(text="••ᴄʟᴏsᴇ••", callback_data="cls")],
+                    [InlineKeyboardButton(text="🗑 Close", callback_data="cls")],
                 ]
             )
             await lel.edit(toxxt, reply_markup=koyboard, disable_web_page_preview=True)
@@ -1087,9 +1087,9 @@ async def lol_cb(b, cb):
     bttn = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("Cᴏᴍᴍᴀɴᴅ", callback_data="cmdp")
+                InlineKeyboardButton("Command", callback_data="cmdp")
             ],[
-                InlineKeyboardButton("ᴛᴜᴛᴜᴘ", callback_data="close")
+                InlineKeyboardButton("🗑 Close", callback_data="close")
             ]
         ]
     )
