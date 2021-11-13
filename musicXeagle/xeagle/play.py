@@ -646,72 +646,54 @@ async def play(_, message: Message):
         )
         requested_by = message.from_user.first_name
         await generate_cover(requested_by, title, views, duration, thumbnail)
-        file = await convert(youtube.download(url))
+        file_path = await converter.convert(youtube.download(url))        
     else:
         query = ""
         for i in message.command[1:]:
             query += " " + str(i)
         print(query)
-        await lel.edit("🎵 **Processing**")
-        ydl_opts = {"format": "bestaudio/best"}
+        ydl_opts = {"format": "bestaudio[ext=m4a]"}
 
         try:
-            results = YoutubeSearch(query, max_results=5).to_dict()
+          results = YoutubeSearch(query, max_results=5).to_dict()
         except:
-            await lel.edit("Give me something to play")
+          await lel.edit("Give me something to play")
         # Looks like hell. Aren't it?? FUCK OFF
         try:
             toxxt = "**Select the song you want to play**\n\n"
             j = 0
-            useer = user_name
-            emojilist = [
-                "1️⃣",
-                "2️⃣",
-                "3️⃣",
-                "4️⃣",
-                "5️⃣",
-            ]
-
+            useer=user_name
+            emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣"]
             while j < 5:
                 toxxt += f"{emojilist[j]} <b>Title - [{results[j]['title']}](https://youtube.com{results[j]['url_suffix']})</b>\n"
                 toxxt += f" ╚ <b>Duration</b> - {results[j]['duration']}\n"
                 toxxt += f" ╚ <b>Views</b> - {results[j]['views']}\n"
                 toxxt += f" ╚ <b>Channel</b> - {results[j]['channel']}\n\n"
-
-                j += 1
-            koyboard = InlineKeyboardMarkup(
+                j += 1            
+            keyboard = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(
-                            "1️⃣", callback_data=f"plll 0|{query}|{user_id}"
-                        ),
-                        InlineKeyboardButton(
-                            "2️⃣", callback_data=f"plll 1|{query}|{user_id}"
-                        ),
-                        InlineKeyboardButton(
-                            "3️⃣", callback_data=f"plll 2|{query}|{user_id}"
-                        ),
+                        InlineKeyboardButton("1️⃣", callback_data=f'plll 0|{query}|{user_id}'),
+                        InlineKeyboardButton("2️⃣", callback_data=f'plll 1|{query}|{user_id}'),
+                        InlineKeyboardButton("3️⃣", callback_data=f'plll 2|{query}|{user_id}'),
                     ],
                     [
-                        InlineKeyboardButton(
-                            "4️⃣", callback_data=f"plll 3|{query}|{user_id}"
-                        ),
-                        InlineKeyboardButton(
-                            "5️⃣", callback_data=f"plll 4|{query}|{user_id}"
-                        ),
+                        InlineKeyboardButton("4️⃣", callback_data=f'plll 3|{query}|{user_id}'),
+                        InlineKeyboardButton("5️⃣", callback_data=f'plll 4|{query}|{user_id}')
                     ],
                     [InlineKeyboardButton(text="🗑 Close", callback_data="cls")],
                 ]
             )
             await message.reply_photo(
-                photo=f"{ALIVE_IMG}",
-                caption=toxxt,
-                reply_markup=keyboard,
+                photo=f"{ALIVE_IMG}", 
+                caption=toxxt, 
+                reply_markup=keyboard
             )
             await lel.delete()
-            # WHY PEOPLE ALWAYS LOVE PORN ?? (A point to think)
+            # ESADE KONSOL SAMA LU SEMUA
             return
-            # Returning to pornhub
+            # NUHANA HINU HANA HINU NYAKKKK
+        except:
         except:
             await lel.edit("No Enough results to choose.. Starting direct play..")
 
