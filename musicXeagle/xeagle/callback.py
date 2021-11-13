@@ -61,10 +61,10 @@ async def cbhelp(_, query: CallbackQuery):
                 ],
                 [
                     InlineKeyboardButton("🥷 Owner Command", callback_data="cbowner"),
-                    InlineKeyboardButton("🎶 music guide", callback_data="cbguide")
+                    InlineKeyboardButton("🎶 Music Guide", callback_data="cbguide")
                 ],
                 [
-                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbstart")
+                    InlineKeyboardButton("☚ Bᴀᴄᴋ", callback_data="cbstart")
                 ]
             ]
         ),
@@ -87,7 +87,7 @@ async def cbbasic(_, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
             [
                 [    
-                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbhelp")
+                    InlineKeyboardButton("☚ Bᴀᴄᴋ", callback_data="cbhelp")
                 ]
             ]
         ),
@@ -110,7 +110,7 @@ async def cbadmin(_, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbhelp")
+                    InlineKeyboardButton("☚ Bᴀᴄᴋ", callback_data="cbhelp")
                 ]
             ]
         ),
@@ -126,7 +126,7 @@ async def cbowner(_, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cbhelp")
+                    InlineKeyboardButton("☚ Bᴀᴄᴋ", callback_data="cbhelp")
                 ]
             ]
         ),
@@ -174,7 +174,7 @@ async def cmdhome(_, query: CallbackQuery):
         ]
     )
     
-    nofound = "❌ **couldn't find song you requested**\n\n» **please provide the correct song name or include the artist's name as well**"
+    nofound = "❌ **Song not found**\n\n☛ **Please give the correct song name or click the button below to see the command**"
     
     await query.edit_message_text(nofound, reply_markup=bttn)
 
@@ -189,7 +189,7 @@ async def cmdsyntax(_, query: CallbackQuery):
 
 Updates channel [Click here](https://t.me/{UPDATES_CHANNEL})""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cmdhome")]]
+            [[InlineKeyboardButton("☚ Bᴀᴄᴋ", callback_data="cmdhome")]]
         ),
     )
 
