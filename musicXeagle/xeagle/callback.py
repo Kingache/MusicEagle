@@ -1,4 +1,5 @@
 # (C) 2021 VeezMusic-Project
+# Do I always have to follow?
 
 from musicXeagle.helpers.decorators import authorized_users_only
 from pyrogram import Client, filters
@@ -17,7 +18,7 @@ from musicXeagle.config import (
 @Client.on_callback_query(filters.regex("cbstart"))
 async def cbstart(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""<b>✨ Welcome {message.from_user.mention()}!</b>
+        f"""<b>✨ Hii Jamet 👋!</b>
 **🎶 I'm here to help you listen to music in voice chat !**
 ⛑️ Find out all the **Bot's commands** and how they work by clicking on the **» ⚙️ Commands** button!""",
         reply_markup=InlineKeyboardMarkup(
@@ -30,13 +31,7 @@ async def cbstart(_, query: CallbackQuery):
                         "⚙️ Command​​", callback_data="cbhelp"
                     ),
                     InlineKeyboardButton(
-                        "🕵🏻‍♂️ Owner", url=f"https://t.me/{OWNER_NAME}")
-                ],[
-                    InlineKeyboardButton(
-                        "📣 Updates", callback_data="cmdsp"
-                    ),
-                    InlineKeyboardButton(
-                        "🛠️ Source Code 🛠️", url=f"{SOURCE_CODE}") 
+                        "📣 Support", callback_data="combined")
                 ],[
                     InlineKeyboardButton(
                         "🗑️ Close", callback_data="close"
@@ -51,8 +46,7 @@ async def cbstart(_, query: CallbackQuery):
 async def cbhelp(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""✨ **Hello !**
-» **press the button below to read the explanation and see the list of available commands !**
-⚡ __Powered by {BOT_NAME} A.I__""",
+» **press the button below to read the explanation and see the list of available commands!""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -74,7 +68,7 @@ async def cbhelp(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbbasic"))
 async def cbbasic(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""🏮 **here is the basic commands**
+        f"""✨ **here is the basic commands**
 🎧 [ VOICE CHAT PLAY CMD ]
 /play (song name) - play song from youtube
 /ytp (song name) - play song directly from youtube 
@@ -82,8 +76,7 @@ async def cbbasic(_, query: CallbackQuery):
 /song (song name) - download song from youtube
 /search (video name) - search video from youtube detailed
 /video (video name) - download video from youtube detailed
-/lyric - (song name) lyrics scrapper
-⚡ __Powered by {BOT_NAME} A.I__""",
+/lyric - (song name) lyrics scrapper.""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [    
@@ -97,7 +90,7 @@ async def cbbasic(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbadmin"))
 async def cbadmin(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""🏮 **here is the admin commands**
+        f""" *✨*here is the admin commands**
 /player - show the music playing status
 /pause - pause the music streaming
 /resume - resume the music was paused
@@ -105,8 +98,7 @@ async def cbadmin(_, query: CallbackQuery):
 /end - stop music streaming
 /join - invite userbot join to your group
 /leave - order the userbot to leave your group
-/music (on / off) - disable / enable music player in your group
-⚡ __Powered by {BOT_NAME} A.I__""",
+/music (on / off) - disable / enable music player in your group.""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -120,9 +112,8 @@ async def cbadmin(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbowner"))
 async def cbowner(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""🏮 **here is the owner commands**
-/broadcast (reply to message) - send a broadcast message from bot
-🔥 __Powered by {BOT_NAME} A.I__""",
+        f"""✨ **here is the owner commands**
+/broadcast (reply to message) - send a broadcast message from bot.""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -180,7 +171,7 @@ async def cmdhome(_, query: CallbackQuery):
 
 
 @Client.on_callback_query(filters.regex("cmdp"))
-async def cmdsyntax(_, query: CallbackQuery):
+async def cmdp(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""**Command** to play music on **Voice Chat:**
 
@@ -195,7 +186,7 @@ Updates channel [Click here](https://t.me/{UPDATES_CHANNEL})""",
 
 
 @Client.on_callback_query(filters.regex("cmdsp"))
-async def cbhelps(_, query: CallbackQuery):
+async def cmdsp(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""**Hello 👋** [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !
 ✨ Let's support this project, just join the channel and group 🎉""",
@@ -207,6 +198,44 @@ async def cbhelps(_, query: CallbackQuery):
                 ],
                 [
                     InlineKeyboardButton("🗑️ Close", callback_data="close")
+                ]
+            ]
+        ),
+    )
+
+
+@Client.on_callback_query(filters.regex("cmdnt"))
+async def cmdnt(_, query: CallbackQuery):
+    await query.edit_message_text(
+        f"""**Hello 👋** [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !
+✨ Let's support this project, just join the channel and group 🎉""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("🕵🏻‍♂️ Owner", url=f"https://t.me/{OWNER_NAME}"),
+                    InlineKeyboardButton("🛠️ Source Code 🛠️", url="https://github.com/Kingache/MusicEagle2")
+                ],
+                [
+                    InlineKeyboardButton("☚ Bᴀᴄᴋ", callback_data="combined")
+                ]
+            ]
+        ),
+    )
+
+
+@Client.on_callback_query(filters.regex("combined"))
+async def combined(_, query: CallbackQuery):
+    await query.edit_message_text(
+        f"""**Hello 👋** [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !
+✨ Let's support this project, just join the channel and group 🎉""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("📣 Updates", callback_data="cmdsp"),
+                    InlineKeyboardButton("🥷 Support", callback_data="cmdnt")
+                ],
+                [
+                    InlineKeyboardButton("☚ Bᴀᴄᴋ", callback_data="cbstart")
                 ]
             ]
         ),
