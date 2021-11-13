@@ -53,9 +53,11 @@ async def _human_time_duration(seconds):
 @Client.on_message(command("start") & filters.private & ~filters.edited)
 async def start_(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>✨ Welcome {message.from_user.mention()}!</b>
-**💭 [{BOT_NAME}](https://t.me/{BOT_USERNAME}) allows you to play music on groups through the new Telegram's voice chats!**
-💡 Find out all the **Bot's commands** and how they work by clicking on the **» ⚙️ Commands** button!""",
+        f"""<b>✨ Welcome Jamet 👋!</b>
+
+**🎶 I'm here to help you listen to music in voice chat !**
+
+⛑️ Find out all the **Bot's commands** and how they work by clicking on the **» ⚙️ Commands** button!""",
         reply_markup=InlineKeyboardMarkup(
                         [ 
                 [
@@ -66,13 +68,7 @@ async def start_(client: Client, message: Message):
                         "⚙️ Command​​", callback_data="cbhelp"
                     ),
                     InlineKeyboardButton(
-                        "🕵🏻‍♂️ Owner", url=f"https://t.me/{OWNER_NAME}")
-                ],[
-                    InlineKeyboardButton(
-                        "📣 Updates", callback_data="cmdsp"
-                    ),
-                    InlineKeyboardButton(
-                        "🛠️ Source Code 🛠️", url=f"{SOURCE_CODE}") 
+                        "📣 Support", callback_data="combined")
                 ],[
                     InlineKeyboardButton(
                         "🗑️ Close", callback_data="close"
@@ -100,7 +96,7 @@ async def start(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "📣 Updates", callback_data="cmdsp"
+                        "⚙️ Help", callback_data="cbstart"
                     )
                 ]
             ]
@@ -118,7 +114,7 @@ async def help(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        text="🎚️ Help ", url=f"https://t.me/{BOT_USERNAME}"
+                        text=" Help ", url=f"https://t.me/{BOT_USERNAME}"
                     )
                 ]
             ]
