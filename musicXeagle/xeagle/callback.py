@@ -326,10 +326,8 @@ async def cbadven(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""👤 **here is the advanced commands**
 /start (in group) - see the bot alive status
-/reload - reload bot and refresh the admin list
 /ping - check the bot ping status
 /uptime - check the bot uptime status
-/id - show the group/user id & other
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
             [
@@ -352,9 +350,6 @@ async def cblamp(_, query: CallbackQuery):
 /end - stop music streaming
 /join - invite userbot join to your group
 /leave - order the userbot to leave your group
-/auth - authorized user for using music bot
-/unauth - unauthorized for using music bot
-/delcmd (on | off) - enable / disable del cmd feature
 /music (on / off) - disable / enable music player in your group
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
@@ -434,5 +429,24 @@ async def cmdsyntax(_, query: CallbackQuery):
 Updates channel [Click here](https://t.me/{UPDATES_CHANNEL})""",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("☚ ʙᴀᴄᴋ", callback_data="cmdhome")]]
+        ),
+    )
+
+
+@Client.on_callback_query(filters.regex("cmdsp"))
+async def cbhelps(_, query: CallbackQuery):
+    await query.edit_message_text(
+        f"""**Hello 👋** [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !
+✨ Let's support this project, just join the channel and group 🎉""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("📣 Updates", url=f"https://t.me/{UPDATES_CHANNEL}"),
+                    InlineKeyboardButton("👤 Support", url=f"https://t.me/{SUPPORT_GROUP}")
+                ],
+                [
+                    InlineKeyboardButton("🗑️ Close", callback_data="close")
+                ]
+            ]
         ),
     )
