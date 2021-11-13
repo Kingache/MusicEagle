@@ -31,13 +31,16 @@ from Python_ARQ import ARQ
 from youtube_search import YoutubeSearch
 
 from musicXeagle.config import ARQ_API_KEY
-from musicXeagle.config import ASSISTANT_NAME
-from musicXeagle.config import BOT_NAME as bn
-from musicXeagle.config import DURATION_LIMIT
-from musicXeagle.config import SUPPORT_GROUP
-from musicXeagle.config import THUMB_IMG
-from musicXeagle.config import UPDATES_CHANNEL as updateschannel
-from musicXeagle.config import que
+from musicXeagle.config import (
+    ASSISTANT_NAME,
+    BOT_NAME as bn,
+    DURATION_LIMIT,
+    SUPPORT_GROUP,
+    THUMB_IMG,
+    BG_IMAGE,
+    UPDATES_CHANNEL as updateschannel,
+    que,
+)
 from musicXeagle.function.admins import admins as a
 from musicXeagle.helpers.admins import get_administrators
 from musicXeagle.helpers.channelmusic import get_chat_id
@@ -290,6 +293,7 @@ async def p_cb(b, cb):
     cb.message.chat
     cb.message.reply_markup.inline_keyboard[0][0].callback_data
     if type_ == "playlist":
+        return
         queue = que.get(cb.message.chat.id)
         if not queue:
             await cb.message.edit("Player is idle")
@@ -318,6 +322,13 @@ async def p_cb(b, cb):
 )
 @cb_admin_check
 async def m_cb(b, cb):
+    keyboard = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("📣 Updates", callback_data="cmdsp"),
+            ],
+        ]
+    )
     global que
     if (
         cb.message.chat.title.startswith("Channel Music: ")
@@ -456,7 +467,7 @@ async def play(_, message: Message):
     bttn = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("Command", callback_data="cmdp")
+                InlineKeyboardButton("⛑️ Command", callback_data="cmdp")
             ],[
                 InlineKeyboardButton("🗑 Close", callback_data="close")
             ]
@@ -568,7 +579,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("• Mᴇɴᴜ", callback_data="menu"),
-                    InlineKeyboardButton("Cʟᴏsᴇ •", callback_data="cls"),
+                    InlineKeyboardButton("Oʀᴅᴇʀ •", callback_data="cmdsp"),
                 ],
             ]
         )
@@ -629,7 +640,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("• Mᴇɴᴜ", callback_data="menu"),
-                    InlineKeyboardButton("Cʟᴏsᴇ •", callback_data="cls"),
+                    InlineKeyboardButton("Oʀᴅᴇʀ •", callback_data="cmdsp"),
                 ],
             ]
         )
@@ -692,7 +703,12 @@ async def play(_, message: Message):
                     [InlineKeyboardButton(text="🗑 Close", callback_data="cls")],
                 ]
             )
-            await lel.edit(toxxt, reply_markup=koyboard, disable_web_page_preview=True)
+            await message.reply_photo(
+                photo=f"{ALIVE_IMG}",
+                caption=toxxt,
+                reply_markup=keyboard,
+            )
+            await lel.delete()
             # WHY PEOPLE ALWAYS LOVE PORN ?? (A point to think)
             return
             # Returning to pornhub
@@ -738,7 +754,7 @@ async def play(_, message: Message):
                 [
                     [
                         InlineKeyboardButton("• Mᴇɴᴜ", callback_data="menu"),
-                        InlineKeyboardButton("Cʟᴏsᴇ •", callback_data="cls"),
+                        InlineKeyboardButton("Oʀᴅᴇʀ •", callback_data="cmdsp"),
                     ],
                 ]
             )
@@ -756,11 +772,9 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"#⃣ Your requested song <b>queued</b> at position {position}!",
+            caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** [{title[:35]}...]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
             reply_markup=keyboard,
         )
-        os.remove("final.png")
-        return await lel.delete()
     else:
         chat_id = get_chat_id(message.chat)
         que[chat_id] = []
@@ -777,10 +791,9 @@ async def play(_, message: Message):
             return
         await message.reply_photo(
             photo="final.png",
+            caption=f"🏷 **Name:** [{title[:70]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n"
+            + f"🎧 **Request by:** {message.from_user.mention}",
             reply_markup=keyboard,
-            caption="▶️ <b>Playing</b> here the song requested by {} via Youtube Music".format(
-                message.from_user.mention()
-            ),
         )
         os.remove("final.png")
         return await lel.delete()
@@ -788,6 +801,19 @@ async def play(_, message: Message):
 
 @Client.on_message(filters.command("ytplay") & filters.group & ~filters.edited)
 async def ytplay(_, message: Message):
+
+    bttn = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("⛑️ Command", callback_data="cmdp")
+            ],[
+                InlineKeyboardButton("🗑 Close", callback_data="close")
+            ]
+        ]
+    )
+
+    nofound = "❌ **couldn't find song you requested**\n\n» **please provide the correct song name or include the artist's name as well**"
+
     global que
     if message.chat.id in DISABLED_GROUPS:
         return
@@ -868,7 +894,12 @@ async def ytplay(_, message: Message):
         views = results[0]["views"]
 
     except Exception as e:
-        await lel.edit("Song not found.Try another song or maybe spell it properly.")
+        await lel.delete()
+        await message.reply_photo(
+            photo=f"{THUMB_IMG}",
+            caption=nofound,
+            reply_markup=bttn,
+        )
         print(str(e))
         return
     try:
@@ -889,7 +920,7 @@ async def ytplay(_, message: Message):
         [
             [
                 InlineKeyboardButton("• Mᴇɴᴜ", callback_data="menu"),
-                InlineKeyboardButton("Cʟᴏsᴇ •", callback_data="cls"),
+                InlineKeyboardButton("Oʀᴅᴇʀ •", callback_data="cmdsp"),
             ],
         ]
     )
@@ -1087,7 +1118,7 @@ async def lol_cb(b, cb):
     bttn = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("Command", callback_data="cmdp")
+                InlineKeyboardButton("⛑️ Command", callback_data="cmdp")
             ],[
                 InlineKeyboardButton("🗑 Close", callback_data="close")
             ]
@@ -1199,7 +1230,7 @@ async def lol_cb(b, cb):
         await b.send_photo(
             chat_id,
             photo="final.png",
-            reply_markup=keyboard,
-            caption=f"▶️ <b>Playing</b> here the song requested by {r_by.mention()} via Youtube Music",
-        )
+                caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** [{title[:35]}...]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {cb.from_user.mention}",
+                reply_markup=keyboard,
+            )
         os.remove("final.png")
