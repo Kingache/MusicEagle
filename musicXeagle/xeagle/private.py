@@ -54,7 +54,7 @@ async def _human_time_duration(seconds):
 async def start_(client: Client, message: Message):
     await message.reply_text(
         f"""<b>✨ Welcome {message.from_user.mention()}!</b>
-**💭 [{BOT_NAME}](https://t.me/{SUPPORT_GROUP}) allows you to play music on groups through the new Telegram's voice chats!**
+**💭 [{BOT_NAME}](https://t.me/{BOT_USERNAME}) allows you to play music on groups through the new Telegram's voice chats!**
 💡 Find out all the **Bot's commands** and how they work by clicking on the **» ⚙️ Commands** button!""",
         reply_markup=InlineKeyboardMarkup(
                         [ 
