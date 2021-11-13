@@ -200,7 +200,7 @@ def r_ply(type_):
                 InlineKeyboardButton("⏭", "skip"),
             ],
             [
-                InlineKeyboardButton("📖 Playlist", "playlist"),
+                InlineKeyboardButton("📖 PLAY-LIST", "playlist"),
             ],
             [InlineKeyboardButton("🗑 Close", "cls")],
         ]
@@ -420,7 +420,7 @@ async def m_cb(b, cb):
                     InlineKeyboardButton("⏭", "skip"),
                 ],
                 [
-                    InlineKeyboardButton("📖 Playlist", "playlist"),
+                    InlineKeyboardButton("📖 PLAY-LIST", "playlist"),
                 ],
                 [InlineKeyboardButton("🗑 Close", "cls")],
             ]
@@ -474,7 +474,7 @@ async def play(_, message: Message):
         ]
     )
 
-    nofound = "❌ **couldn't find song you requested**\n\n» **please provide the correct song name or include the artist's name as well**"
+    nofound = "❌ **Song not found**\n\n☛ **Please give the correct song name or click the button below to see the command**"
 
     global que
     global useer
@@ -579,7 +579,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("• Mᴇɴᴜ", callback_data="menu"),
-                    InlineKeyboardButton("Oʀᴅᴇʀ •", callback_data="cmdsp"),
+                    InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ •", callback_data="cmdsp"),
                 ],
             ]
         )
@@ -629,7 +629,7 @@ async def play(_, message: Message):
                 secmul *= 60
             if (dur / 60) > DURATION_LIMIT:
                 await lel.edit(
-                    f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
+                    f"❌ Music longer than {DURATION_LIMIT} minutes aren't allowed to play!"
                 )
                 return
         except:
@@ -640,7 +640,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("• Mᴇɴᴜ", callback_data="menu"),
-                    InlineKeyboardButton("Oʀᴅᴇʀ •", callback_data="cmdsp"),
+                    InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ •", callback_data="cmdsp"),
                 ],
             ]
         )
@@ -754,7 +754,7 @@ async def play(_, message: Message):
                 [
                     [
                         InlineKeyboardButton("• Mᴇɴᴜ", callback_data="menu"),
-                        InlineKeyboardButton("Oʀᴅᴇʀ •", callback_data="cmdsp"),
+                        InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ •", callback_data="cmdsp"),
                     ],
                 ]
             )
@@ -812,7 +812,7 @@ async def ytplay(_, message: Message):
         ]
     )
 
-    nofound = "❌ **couldn't find song you requested**\n\n» **please provide the correct song name or include the artist's name as well**"
+    nofound = "❌ **Song not found**\n\n☛ **Please give the correct song name or click the button below to see the command**"
 
     global que
     if message.chat.id in DISABLED_GROUPS:
@@ -909,7 +909,7 @@ async def ytplay(_, message: Message):
             secmul *= 60
         if (dur / 60) > DURATION_LIMIT:
             await lel.edit(
-                f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
+                f"❌ Music longer than {DURATION_LIMIT} minutes aren't allowed to play!"
             )
             return
     except:
@@ -920,7 +920,7 @@ async def ytplay(_, message: Message):
         [
             [
                 InlineKeyboardButton("• Mᴇɴᴜ", callback_data="menu"),
-                InlineKeyboardButton("Oʀᴅᴇʀ •", callback_data="cmdsp"),
+                InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ •", callback_data="cmdsp"),
             ],
         ]
     )
@@ -1124,7 +1124,7 @@ async def lol_cb(b, cb):
             ]
         ]
     )
-    nofound = "❌ **couldn't find song you requested**\n\n» **please provide the correct song name or include the artist's name as well**"
+    nofound = "❌ **Song not found**\n\n☛ **Please give the correct song name or click the button below to see the command**"
     global que
 
     cbd = cb.data.strip()
@@ -1186,7 +1186,7 @@ async def lol_cb(b, cb):
         [
             [
                 InlineKeyboardButton("• Mᴇɴᴜ", callback_data="menu"),
-                InlineKeyboardButton("Cʟᴏsᴇ •", callback_data="cls"),
+                InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ •", callback_data="cmdsp"),
             ],
         ]
     )
