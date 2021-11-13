@@ -69,16 +69,13 @@ async def start_(client: Client, message: Message):
                         "🕵🏻‍♂️ Owner", url=f"https://t.me/{OWNER_NAME}")
                 ],[
                     InlineKeyboardButton(
-                        "👥 Official Group​​", url=f"https://t.me/{SUPPORT_GROUP}"
+                        "📣 Updates", callback_data="cmdsp"
                     ),
-                    InlineKeyboardButton(
-                        "📮 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}")
-                ],[
                     InlineKeyboardButton(
                         "🛠️ Source Code 🛠️", url=f"{SOURCE_CODE}") 
                 ],[
                     InlineKeyboardButton(
-                        "❔ About me​​", callback_data="cbabout"
+                        "🗑️ Close", callback_data="close"
                     )
                 ]
             ]
@@ -95,15 +92,15 @@ async def start(client: Client, message: Message):
     uptime = await _human_time_duration(int(uptime_sec))
     delta_ping = time() - start
     await message.reply_text(
-        f"""<b>👋 **Hello {message.from_user.mention()}** ❗</b>
-✅ **I'm active and ready to play music!
+        f"""<b>**Hello {message.from_user.mention()}** 👋</b>
+**I'm active and ready to play music! 🎶
 • Start time: `{START_TIME_ISO}`
 """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "Group support", url=f"https://t.me/{SUPPORT_GROUP}"
+                        "📣 Updates", callback_data="cmdsp"
                     )
                 ]
             ]
@@ -114,14 +111,14 @@ async def start(client: Client, message: Message):
 @Client.on_message(command(["help", f"help@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 async def help(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>👋 **Hello** {message.from_user.mention()}</b>
+        f"""<b>**Hello** {message.from_user.mention()}👋</b>
 **Please press the button below to read the explanation and see the list of available commands !**
 """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        text=" Hoe to use me ❔", url=f"https://t.me/{BOT_USERNAME}"
+                        text="🎚️ Help ", url=f"https://t.me/{BOT_USERNAME}"
                     )
                 ]
             ]
@@ -159,12 +156,12 @@ async def get_uptime(client: Client, message: Message):
 @Client.on_message(command(["donate", f"donate@{BOT_USERNAME}"]) & ~filters.edited)
 async def donate(client: Client, message: Message):
     await message.reply_text(
-        f"__Hi **{message.from_user.mention()}**, it's great if you want to support this bot 😇. Tap the button below to continue__",
+        f"__Hi **{message.from_user.mention()}**, to always support this bot, you can donate via the button below__",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        text="Continue 🔰", url=f"https://t.me/{OWNER_NAME}"
+                        text="🥷 Donate", url=f"https://t.me/{OWNER_NAME}"
                     )
                 ]
             ]
