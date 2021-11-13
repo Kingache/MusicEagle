@@ -68,7 +68,7 @@ async def alive(client: Client, message: Message):
     await client.send_photo(
         konsols,
         photo=f"{ALIVE_IMG}",
-        caption=f"""**Hallo {message.from_user.mention()}, I'm [{BOT_NAME}](https://t.me/{BOT_USERNAME})**
+        caption=f"""**Hallo {message.from_user.mention()}👋**
 
 ╭✠╼━━━━━━❖━━━━━━━❖━━✠╮
 ┣[• **Have you played music today?**
@@ -82,7 +82,7 @@ async def alive(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "ᴀʙᴏᴜᴛ", callback_data="cblocal"
+                        "ᴀʙᴏᴜᴛ", callback_data="cbbasic"
                     ),
                     InlineKeyboardButton(
                         "sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_GROUP}"
