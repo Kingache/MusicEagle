@@ -18,8 +18,8 @@ from musicXeagle.config import (
 async def cbstart(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""<b>✨ Welcome {message.from_user.mention()}!</b>
-**💭 [{BOT_NAME}](https://t.me/{BOT_USERNAME}) allows you to play music on groups through the new Telegram's voice chats!**
-💡 Find out all the **Bot's commands** and how they work by clicking on the **» ⚙️ Commands** button!""",
+**🎶 I'm here to help you listen to music in voice chat !**
+⛑️ Find out all the **Bot's commands** and how they work by clicking on the **» ⚙️ Commands** button!""",
         reply_markup=InlineKeyboardMarkup(
                         [ 
                 [
