@@ -213,7 +213,7 @@ async def cmdnt(_, query: CallbackQuery):
             [
                 [
                     InlineKeyboardButton("🕵🏻‍♂️ Owner", url=f"https://t.me/{OWNER_NAME}"),
-                    InlineKeyboardButton("🛠️ Source Code 🛠️", url="https://github.com/Kingache/MusicEagle2")
+                    InlineKeyboardButton("🛠️ Source Code 🛠️", url="https://github.com/Kingache/MusicEagle")
                 ],
                 [
                     InlineKeyboardButton("☚ Bᴀᴄᴋ", callback_data="combined")
