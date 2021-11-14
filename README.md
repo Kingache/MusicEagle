@@ -2,10 +2,7 @@
 <br>
 <br>
 <p align="center">
-    <a href="https://travis-ci.com/Kingache/MusicEagle.svg?branch=Eagle-Ubot" /></a>
-    <a href="https://github.com/Kingache/MusicEagle"> <img src="https://img.shields.io/github/repo-size/Kingache/MusicEagle?logo=github&style=for-the-badge" /></a>
-    <a href="https://github.com/Kingache/MusicEagle/network/members"> <img src="https://img.shields.io/github/forks/Kingache/MusicEagle?logo=github&style=for-the-badge" /></a>
-<a href="https://t.me/EagleSupport"><img src="https://img.shields.io/badge/Join-Group%20Support-blue.svg?style=for-the-badge&logo=Telegram"></a>
+    <a href="https://t.me/EagleSupport"><img src="https://img.shields.io/badge/Join-Group%20Support-blue.svg?style=for-the-badge&logo=Telegram"></a>
     <a href="https://t.me/infobotrelax"><img src="https://img.shields.io/badge/Join-Channel%20Support-blue.svg?style=for-the-badge&logo=Telegram"></a>
    </p>
    
