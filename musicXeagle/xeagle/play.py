@@ -694,7 +694,6 @@ async def play(_, message: Message):
             return
             # NUHANA HINU HANA HINU NYAKKKK
         except:
-        except:
             await lel.edit("No Enough results to choose.. Starting direct play..")
 
             # print(results)
