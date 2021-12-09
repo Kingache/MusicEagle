@@ -1,4 +1,3 @@
-<h1 align="center">🎶 EAGLE MUSIC 🎶</h1>
 <br>
 <br>
 <p align="center">
